@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home — Rental Transport</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- Navbar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="home.html" class="text-2xl font-bold text-indigo-600">RentalTransport</a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="vehicals.html" class="hover:text-indigo-600">Vehicles</a>
+        <a href="about.html" class="hover:text-indigo-600">About</a>
+        <a href="contact.html" class="hover:text-indigo-600">Contact</a>
+        <a href="booking.html" class="hover:text-indigo-600">Book Now</a>
+        <div class="flex items-center gap-3">
+          <span id="userGreeting" class="text-sm text-gray-600"></span>
+          <button id="logoutBtn" class="px-4 py-2 bg-red-500 text-white rounded text-sm hover:bg-red-600">Logout</button>
+        </div>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobileMenuBtn" class="md:hidden">☰</button>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+      <a href="vehicals.html" class="block px-4 py-2">Vehicles</a>
+      <a href="about.html" class="block px-4 py-2">About</a>
+      <a href="contact.html" class="block px-4 py-2">Contact</a>
+      <a href="booking.html" class="block px-4 py-2">Book Now</a>
+      <div class="px-4 py-2">
+        <span id="userGreetingMobile" class="text-sm text-gray-600 block mb-2"></span>
+        <button id="logoutBtnMobile" class="px-4 py-2 bg-red-500 text-white rounded text-sm">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Welcome Section -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 id="welcomeMessage" class="text-4xl md:text-5xl font-extrabold mb-4">Welcome Back!</h1>
+      <p class="text-lg md:text-xl opacity-90">Your journey starts here. Explore our vehicles and book your ride today.</p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-12">
+    
+    <!-- Quick Actions -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-center">Quick Actions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <a href="booking.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4">🚗</div>
+          <h3 class="font-semibold text-lg mb-2">Book a Vehicle</h3>
+          <p class="text-gray-600 text-sm">Reserve your perfect ride for your next trip</p>
+        </a>
+        <a href="vehicals.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4">🔍</div>
+          <h3 class="font-semibold text-lg mb-2">Browse Vehicles</h3>
+          <p class="text-gray-600 text-sm">Explore our wide range of rental options</p>
+        </a>
+        <a href="contact.html" class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition text-center">
+          <div class="text-4xl mb-4">📞</div>
+          <h3 class="font-semibold text-lg mb-2">Contact Support</h3>
+          <p class="text-gray-600 text-sm">Get help with your bookings or queries</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="bg-white p-6 rounded-lg shadow mb-12">
+      <h2 class="text-xl font-semibold mb-4">Find Your Perfect Ride</h2>
+      <form id="quickSearch" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input name="pickup" placeholder="Pickup location" class="p-3 border rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <input name="drop" placeholder="Drop location" class="p-3 border rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <input name="date" type="date" class="p-3 border rounded focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        <a href="vehicals.html" class="p-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition text-center">Search Vehicles</a>
+      </form>
+    </section>
+
+    <!-- Featured Vehicles -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Featured Vehicles</h2>
+      <div id="homeVehicles" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="bg-indigo-50 rounded-lg p-8 mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-center">Why Choose Us?</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <div class="text-3xl font-bold text-indigo-600">500+</div>
+          <div class="text-gray-600 text-sm">Vehicles Available</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-indigo-600">10K+</div>
+          <div class="text-gray-600 text-sm">Happy Customers</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-indigo-600">24/7</div>
+          <div class="text-gray-600 text-sm">Customer Support</div>
+        </div>
+        <div>
+          <div class="text-3xl font-bold text-indigo-600">50+</div>
+          <div class="text-gray-600 text-sm">Locations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent Activity (Placeholder) -->
+    <section class="bg-white rounded-lg shadow p-6">
+      <h2 class="text-xl font-semibold mb-4">Your Dashboard</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="border rounded-lg p-4">
+          <h3 class="font-semibold mb-2">📅 Upcoming Bookings</h3>
+          <p class="text-gray-500 text-sm">No upcoming bookings. <a href="booking.html" class="text-indigo-600 hover:underline">Book a vehicle now!</a></p>
+        </div>
+        <div class="border rounded-lg p-4">
+          <h3 class="font-semibold mb-2">⭐ Favorites</h3>
+          <p class="text-gray-500 text-sm">Browse vehicles and add them to favorites. <a href="vehicals.html" class="text-indigo-600 hover:underline">Explore vehicles</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-12">
+    <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-sm">
+        &copy; <span id="year"></span> Shivangi dwivedi. All rights reserved.
+      </div>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="text-gray-500 hover:text-indigo-600">Privacy</a>
+        <a href="#" class="text-gray-500 hover:text-indigo-600">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    
+    // Get user info from localStorage
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    const userEmail = localStorage.getItem('loggedInEmail') || currentUser.email || 'User';
+    const userName = currentUser.name || userEmail.split('@')[0];
+    
+    // Set greeting messages
+    document.getElementById('welcomeMessage').textContent = `Welcome Back, ${userName}!`;
+    document.getElementById('userGreeting').textContent = `Hello, ${userName}`;
+    document.getElementById('userGreetingMobile').textContent = `Hello, ${userName}`;
+    
+    // Logout functionality
+    function handleLogout() {
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('loggedInEmail');
+      window.location.href = 'login.html';
+    }
+    
+    document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+    document.getElementById('logoutBtnMobile').addEventListener('click', handleLogout);
+  </script>
+
+</body>
+</html>

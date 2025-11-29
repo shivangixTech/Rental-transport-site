@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Rental Transport</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <!-- Navigation bar -->
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-indigo-600">RentalTransport</a>
+      <!-- Desktop navigation -->
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="vehicals.html" class="hover:text-indigo-600">Vehicles</a>
+        <a href="about.html" class="hover:text-indigo-600">About</a>
+        <a href="contact.html" class="hover:text-indigo-600">Contact</a>
+        <a href="login.html" class="px-4 py-2 border rounded text-sm">Login</a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobileMenuBtn" class="md:hidden">☰</button>
+    </div>
+    <!-- Mobile navigation menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+      <a href="vehicals.html" class="block px-4 py-2">Vehicles</a>
+      <a href="about.html" class="block px-4 py-2">About</a>
+      <a href="contact.html" class="block px-4 py-2">Contact</a>
+      <a href="login.html" class="block px-4 py-2">Login</a>
+    </div>
+  </header>
+
+  <div class="min-h-screen flex items-center justify-center py-12">
+    <form id="loginForm" class="bg-white p-6 rounded shadow w-full max-w-sm">
+      <h2 class="text-xl font-bold">Login</h2>
+      <label class="block mt-4">
+        <span class="text-sm">Email</span>
+        <input id="loginEmail" type="email" required class="mt-1 p-2 border rounded w-full">
+      </label>
+      <label class="block mt-3">
+        <span class="text-sm">Password</span>
+        <input id="loginPassword" type="password" required class="mt-1 p-2 border rounded w-full">
+      </label>
+      <div class="mt-4 flex justify-between items-center">
+        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded">Login</button>
+        <a href="signup.html" class="text-sm text-indigo-600">Create account</a>
+      </div>
+      <div id="loginMsg" class="mt-3 text-sm text-red-500"></div>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

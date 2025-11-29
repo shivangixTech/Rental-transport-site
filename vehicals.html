@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vehicles — Rental Transport</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-white shadow">
+    <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-2xl font-bold text-indigo-600">RentalTransport</a>
+      <nav class="hidden md:flex gap-6 items-center">
+        <a href="vehicles.html" class="hover:text-indigo-600">Vehicles</a>
+        <a href="about.html" class="hover:text-indigo-600">About</a>
+        <a href="contact.html" class="hover:text-indigo-600">Contact</a>
+        <a href="login.html" class="px-4 py-2 border rounded text-sm">Login</a>
+      </nav>
+      <button id="mobileMenuBtn2" class="md:hidden">☰</button>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-2xl font-bold">Available Vehicles</h1>
+
+    <!-- filters -->
+    <section class="mt-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex gap-3">
+        <select id="filterColor" class="p-2 border rounded">
+          <option value="">All Colors</option>
+          <option value="Red">Red</option>
+          <option value="Blue">Blue</option>
+          <option value="Black">Black</option>
+          <option value="White">White</option>
+          <option value="Silver">Silver</option>
+          <option value="Gray">Gray</option>
+        </select>
+        <select id="sortBy" class="p-2 border rounded">
+          <option value="">Sort By</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+        </select>
+      </div>
+      <div>
+        <input id="searchInput" placeholder="Search by name" class="p-2 border rounded">
+      </div>
+    </section>
+
+    <section id="vehicleGrid" class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></section>
+
+    <!-- Stats: will be populated by JS using reduce/loops on the vehicle list -->
+    <section id="vehicleStats" class="mt-8 p-4 bg-white rounded shadow"></section>
+  </main>
+
+  <footer class="bg-white border-t mt-12">
+    <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-sm">&copy; <span id="year2"></span> RentalTransport.</div>
+      <div class="flex gap-4 mt-4 md:mt-0">
+        <a href="#" class="text-gray-500 hover:text-indigo-600">Privacy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>document.getElementById('year2').textContent = new Date().getFullYear();</script>
+</body>
+</html>

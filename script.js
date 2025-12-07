@@ -61,10 +61,49 @@ async function loadHomeVehicles() {
   `).join('');
 }
 
+/* Display search parameters */
+function displaySearchParams() {
+  const params = new URLSearchParams(location.search);
+  const pickup = params.get('pickup');
+  const drop = params.get('drop');
+  
+  const mainEl = document.querySelector('main');
+  if (!mainEl) return;
+  
+  let infoEl = document.getElementById('searchInfo');
+  if (!infoEl) {
+    infoEl = document.createElement('div');
+    infoEl.id = 'searchInfo';
+    mainEl.insertBefore(infoEl, mainEl.firstChild.nextSibling);
+  }
+  
+  if (pickup || drop) {
+    infoEl.className = 'mt-4 p-4 bg-indigo-50 border border-indigo-200 rounded-lg';
+    infoEl.innerHTML = `
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-lg font-semibold text-indigo-900">Search Results</h2>
+          <p class="text-sm text-gray-700 mt-1">
+            ${pickup ? `<span class="font-medium">Pickup:</span> ${pickup}` : ''}
+            ${pickup && drop ? ' → ' : ''}
+            ${drop ? `<span class="font-medium">Drop:</span> ${drop}` : ''}
+          </p>
+        </div>
+        <a href="vehicals.html" class="text-sm text-indigo-600 hover:text-indigo-800">Clear Search</a>
+      </div>
+    `;
+  } else {
+    infoEl.innerHTML = '';
+    infoEl.className = '';
+  }
+}
+
 /* VEHICLE LIST: render grid with filters */
 async function loadVehicleList() {
   const grid = document.getElementById('vehicleGrid');
   if (!grid) return;
+  
+  displaySearchParams();
   
   const response = await fetchJSON('https://myfakeapi.com/api/cars/');
   if (!response || !response.cars) {
@@ -316,10 +355,16 @@ function attachQuickSearch() {
   
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const pickup = form.pickup.value;
-    const drop = form.drop.value;
+    const pickup = form.pickup.value.trim();
+    const drop = form.drop.value.trim();
+    
+    if (!pickup || !drop) {
+      alert('Please enter both pickup and drop locations');
+      return;
+    }
+    
     const params = new URLSearchParams({pickup, drop});
-    location.href = `vehicles.html?${params.toString()}`;
+    location.href = `vehicals.html?${params.toString()}`;
   });
 }
 
